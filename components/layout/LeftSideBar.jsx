@@ -38,15 +38,21 @@ const LeftSideBar = () => {
 
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 items-center text-light-1">
+        {userData ? (
           <Link href={`/profile/${userData._id}/posts`}>
+            <a>
             <Image
-              src={userData?.profilePhoto}
+              src={userData.profilePhoto}
               alt="profile photo"
               width={50}
               height={50}
               className="rounded-full"
             />
+            </a>
           </Link>
+        ) :(
+          <div className="w-12 h-12 rounded-full bg-gray-200 animate-pulse" /> // Placeholder for loading state
+        )}
           <p className="text-small-bold">
             {userData?.firstName} {userData?.lastName}
           </p>
@@ -75,6 +81,7 @@ const LeftSideBar = () => {
 
       <div className="flex gap-4 items-center">
         <UserButton appearance={{ baseTheme: dark }} afterSignOutUrl="/sign-in" />
+
         <p className="text-light-1 text-body-bold">Manage Account</p>
       </div>
     </div>
