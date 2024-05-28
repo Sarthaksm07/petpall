@@ -58,9 +58,15 @@ const TopBar = () => {
       </button>
 
       <div className="flex gap-4 md:hidden">
+      {userData ? (
         <Link href={`/profile/${userData._id}/posts`}>
-          <Person sx={{ fontSize: "35px", color: "white" }} />
+          <a>
+            <Person sx={{ fontSize: '35px', color: 'white' }} />
+          </a>
         </Link>
+      ) : (
+        <p>Loading...</p> // or any other fallback UI
+      )}
 
         <UserButton appearance={{ baseTheme: dark }} afterSignOutUrl="/sign-in" />
       </div>
